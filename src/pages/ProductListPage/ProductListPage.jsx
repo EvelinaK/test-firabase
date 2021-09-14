@@ -48,7 +48,7 @@ const ProductListPage = () => {
 
   return (
     <Fragment>
-      <Decoration isLoginPage={true} />
+      <Decoration/>
               <div >
                   <AddCircleOutlineIcon style={{ color: '#669c54',fontSize: 54}} onClick={() => history.push('/add')}>Add New Product</AddCircleOutlineIcon>
               </div>

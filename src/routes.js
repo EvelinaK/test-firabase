@@ -6,7 +6,7 @@ const routes = [
     path: "/",
     exact: true,
     component: lazy(() => import("./pages/HomePage")),
-    privated: false,
+    privated: true,
     restricted: true,
   },
   {

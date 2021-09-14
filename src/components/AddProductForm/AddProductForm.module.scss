@@ -7,6 +7,12 @@
   flex-direction: column;
   padding-top: 30px;
 }
+
+.HomeWrapper{
+  display: flex;
+  justify-content: center;
+
+}
 .DailyCaloriesFormWrapper {
   padding-top: 30px;
   width: 100%;
@@ -65,6 +71,7 @@
     font-size: 30px;
     line-height: 1.529;
     margin-bottom: 5px;
+    color: #1890ff99;;
   }
   .DailyCaloriesFormInput {
     font-family: 'VerdanaBold';
@@ -116,7 +123,7 @@
 @media screen and (min-width: 1100px) {
   .DailyCaloriesFormWrapper {
     width: 605px;
-    padding-top: 137px;
+    padding-top: 50px;
   }
   .DailyCaloriesFormTitle {
     font-family: VerdanaBold, sans-serif;
@@ -145,12 +152,6 @@
     left: 50%;
   }
 }
-
-
-
-
-
-
 
 
 

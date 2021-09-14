@@ -7,7 +7,7 @@ const ContactList = () => {
 
   return (
     <Fragment>
-        <Decoration isLoginPage={true} />
+        <Decoration  />
       <section className={css.container} >
                   <AddProductForm/>  
       </section>

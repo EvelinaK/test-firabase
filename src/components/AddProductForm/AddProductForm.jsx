@@ -45,20 +45,51 @@ const SUPPORTED_FORMATS = [
        saleEndDate: ''
    };
 
-   const loadImg = (file) => {
-     if( typeof(file) === 'string'){
-       debugger
-       img = file;
-      
-     }else {
-      let reader = new FileReader();
-      reader.readAsDataURL(file);
-      reader.onloadend = () => {
-        setImageSource(reader.result)
-      };
-    }
-   }
+  //  useEffect(() => {
 
+  //   const loadImg = (file) => {
+  //     if( typeof(file) === 'string'){
+  //       debugger
+  //       img = file;
+       
+  //     }else {
+  //      let reader = new FileReader();
+  //      reader.readAsDataURL(file);
+  //      reader.onloadend = () => {
+  //        setImageSource(reader.result)
+  //      };
+  //    }
+  //   }
+ 
+
+
+  //   if(isEditMode) {
+  //     const handleProduct = (product) => {
+  //       const data = product.val();
+
+  //       for (let val in data) {
+  //         initialValues[val] = data[val]
+  //       }
+  //       loadImg(initialValues.image);
+  //     }
+  //     DB.getProduct(id).on("value", handleProduct);
+  //   }
+
+  // }, [FileImg, isEditMode,initialValues,id]); 
+
+
+  const loadImg = (file) => {
+    if( typeof(file) === 'string'){
+      img = file;
+     
+    }else {
+     let reader = new FileReader();
+     reader.readAsDataURL(file);
+     reader.onloadend = () => {
+       setImageSource(reader.result)
+     };
+   }
+  }
     if(isEditMode) {
       const handleProduct = (product) => {
         const data = product.val();
@@ -73,8 +104,7 @@ const SUPPORTED_FORMATS = [
 
     Yup.addMethod(Yup.mixed, 'imageDimensionCheck',
     function (message, minDimensionValue, maxDimensionValue) { 
-    return this.test("image-width-height-check", message, async function (value) {
-        debugger
+    return this.test("imageDimensionCheck", message, async function (value) {
         const { path, createError } = this;
         let result = false;
 
@@ -138,7 +168,7 @@ const SUPPORTED_FORMATS = [
   const AddProdSchema = Yup.object().shape({
     image:Yup.mixed() 
     .required('You need to provide a file') 
-    .imageDimensionCheck('test',500, 4000)
+    .imageDimensionCheck('Image doesn`t match adjusted dimension',500, 4000)
     .test(
       "fileFormat",
       "Unsupported Format",
@@ -171,7 +201,6 @@ const SUPPORTED_FORMATS = [
   function onSubmit( values, { setStatus, setSubmitting }) {
     setStatus();
     if (isAddMode) {
-      debugger
       createFormProduct(values, setSubmitting);
     } else {
       updateFormProduct(id, values, setSubmitting);
@@ -202,8 +231,6 @@ const SUPPORTED_FORMATS = [
     }, [FileImg, isAddMode]); 
 
 
-
- 
       return (
           <div className={css.DailyCaloriesFormWrapper}>
           <h2 className={css.DailyCaloriesFormTitle}>
@@ -213,7 +240,7 @@ const SUPPORTED_FORMATS = [
             <Button
             type='button'
             variant="contained"
-            color="primary"
+            style={{ color: '#fff',background: '#669c54'}}
             onClick={() => history.goBack()}>
              Back
           </Button>
@@ -305,7 +332,7 @@ const SUPPORTED_FORMATS = [
                   <ErrorMessage name="saleEndDate">
                   {msg => <p className={css.notification}>{msg}</p>}
                 </ErrorMessage>
-          <Button type='submit' color="primary"  size="large" variant="contained" >
+          <Button type='submit' style={{ color: '#fff',background: '#669c54'}}  size="large" variant="contained" >
                          { id? 'Update Product' : 'Add Product'} 
               </Button>
             </Form>

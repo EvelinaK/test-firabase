@@ -33,7 +33,12 @@ export default function ProductItem({product}) {
     setExpanded(!expanded);
   };
 
-  
+  console.log(product)
+const editProduct=(id)=>{
+  debugger
+  history.push(`/edit/${id}`)
+}
+
   const removeProduct = () => {
     dispatch(deleteProduct(product.id));
   };
@@ -42,7 +47,7 @@ export default function ProductItem({product}) {
 
   return (
     <>
-     <Grid item xs={12}>
+     <Grid item xs={6}>
       <Card className={classes.root}>
         <CardActionArea>
           <CardMedia
@@ -79,9 +84,9 @@ export default function ProductItem({product}) {
         size="large"
         className={classes.button}
         startIcon={<EditIcon />}
-        // onClick={() => history.push(`/edit/${product.id}`)}
-      >
-        onClick={() => history.push(`/edit/${product.id}`)} Edit
+        debugger
+        onClick={()=>editProduct(product.id)}
+      > Edit
       </Button>
           <IconButton
             aria-label="delete"
@@ -131,7 +136,7 @@ const useStyles = makeStyles(theme => ({
     transition: 'all 0.3s cubic-bezier(.25,.8,.25,1)',
     textDecoration: 'none',
     color: '#000000ba',
-    fontSize: '30px', 
+    fontSize: '15px', 
      '&:hover': {
         boxShadow:' 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22)',
       }
